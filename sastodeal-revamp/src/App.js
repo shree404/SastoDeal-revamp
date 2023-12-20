@@ -1,11 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './Components/Navbar';
+import Button from '@mui/material/Button'
 
 function App() {
   return (
-    <div className="App m-4 text-cyan-600 font-bold text-2xl">
-      Hello There , This is a test message.
-      </div>
+    <div>
+      <Navbar/>
+      <Button variant='contained'>Hello There</Button>
+    </div>
   );
 }
 
