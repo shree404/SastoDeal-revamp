@@ -17,7 +17,6 @@
   }
   ```
 
-````
   - login
   ```bash
   GET : /api/user/login
@@ -25,7 +24,7 @@
     "email": "ramprasad@gmail.com",
     "password": "Ram123"
 }
-````
+```
 
 ## Run Locally
 
