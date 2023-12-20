@@ -1,43 +1,74 @@
-# Sastodeal
+# SastoDeal
 
-- **Backend**: Node, Express, MongoDB/Mongoose
+Welcome to SastoDeal - your ultimate destination for great deals!
 
-## Features
+## Backend Setup
 
-- User Account
-  - Register
-  ```bash
-  POST : /api/user/register
-  JSON : {
-    "firstname": "Ram",
-    "lastname": "Prasad",
-    "email": "ramprasad@gmail.com",
-    "password": "Ram123",
-    "phone": 1234567890
-  }
-  ```
+Backend is powered by Node.js, Express, and MongoDB/Mongoose. Follow these simple steps to set up the backend and start integrating it with the frontend.
 
-  - login
-  ```bash
-  GET : /api/user/login
-  JSON : {
-    "email": "ramprasad@gmail.com",
-    "password": "Ram123"
-}
-```
+### Getting Started
 
-## Run Locally
+1. **Clone the Repository**
 
-- Clone repo
+   ```bash
+   git clone https://github.com/shree404/SastoDeal-revamp
+   ```
+
+2. **Navigate to the Backend Directory**
+
+   ```bash
+   cd SastoDeal-revamp/backend
+   ```
+
+3. **Install Dependencies**
+
+   ```bash
+   npm install
+   ```
+
+4. **Set Environment Variables**
+
+   Create a `.env` file in the `backend` directory and configure the following variables:
+
+   ```
+   PORT=3000            # Port on which the server will run
+   MONGO_URI=<your-mongo-db-uri> # Your MongoDB connection URI
+   JWT_SECRET=<your-secret-key> # Secret key for JWT
+   JWT_EXPIRE=30d        # JWT token expiration time (e.g., 30 days)
+   ```
+
+### Features
+
+- **User Account**
+  - **Register a New User**
+    - Endpoint: `POST /api/user/register`
+    - JSON Payload:
+      ```json
+      {
+        "firstname": "YourFirstName",
+        "lastname": "YourLastName",
+        "email": "your.email@example.com",
+        "password": "YourPassword",
+        "phone": 1234567890
+      }
+      ```
+
+  - **User Login**
+    - Endpoint: `GET /api/user/login`
+    - JSON Payload:
+      ```json
+      {
+        "email": "your.email@example.com",
+        "password": "YourPassword"
+      }
+      ```
+
+### Running the Server
+
+Once everything is set up, run the server:
 
 ```bash
-  git clone https://github.com/shree404/SastoDeal-revamp
+npm run server
 ```
 
-- Server
-  - env variables: PORT, MONGO_URI, JWT_SECRET, JWT_EXPIRE
-  - ```
-      cd SastoDeal-revamp/backend
-      npm install
-      npm run server
-    ```
+Now, your backend is up and running on the specified port!
