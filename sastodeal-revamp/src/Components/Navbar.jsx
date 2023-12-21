@@ -21,9 +21,6 @@ const Search = styled("div")(({ theme }) => ({
     paddingTop: "5px"
 }));
 
-const Icons = styled(Box)(({ theme }) => ({
-}))
-
 const Navbar = () => {
     return (
         <div>
@@ -47,18 +44,18 @@ const Navbar = () => {
 
                 <AppBar position='sticky'  style={{ background: '#613E98' }}>
                     <StyleToolbar>
-                        <Typography variant='h5' style={{fontWeight:'800'}}>sastodeal.co</Typography>
-                        <Typography variant='subtitle2'>Bazar<ArrowDropDownIcon /></Typography>
-                        <Typography variant='subtitle2'>Stores</Typography>
-                        <Typography variant='subtitle2'>New Arrivals</Typography>
-                        <Typography variant='subtitle2'>Brands</Typography>
+                        <Typography variant='h4' style={{fontWeight:'800'}}>sastodeal.co</Typography>
+                        <Typography variant='body'>Bazar<ArrowDropDownIcon /></Typography>
+                        <Typography variant='body'>Stores</Typography>
+                        <Typography variant='body'>New Arrivals</Typography>
+                        <Typography variant='body'>Brands</Typography>
 
 
                         <Search><SearchSharpIcon color='action' /> <InputBase placeholder='Search for products...' /></Search>
-                        <Icons><ShoppingCartOutlined /></Icons>
-                        <Icons><FavoriteBorderOutlinedIcon /></Icons>
+                        <ShoppingCartOutlined />
+                        <FavoriteBorderOutlinedIcon />
 
-                        <Typography variant='subtitle2'><span>Login</span> | <span>Signup</span><AccountCircleOutlinedIcon /></Typography>
+                        <Typography variant='body'><span>Login</span> | <span>Signup</span><AccountCircleOutlinedIcon /></Typography>
 
 
 
