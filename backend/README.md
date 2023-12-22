@@ -39,8 +39,12 @@ Backend is powered by Node.js, Express, and MongoDB/Mongoose. Follow these simpl
 
 ### Features
 
+Our backend provides the following features:
+
 - **User Account**
+
   - **Register a New User**
+
     - Endpoint: `POST /api/user/register`
     - JSON Payload:
       ```json
