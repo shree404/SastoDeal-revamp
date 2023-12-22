@@ -9,8 +9,10 @@ const { notFound, errorHandler } = require("./middlewares/errorHandler");
 dbConnect();
 
 app.use(express.json());
-
 app.use("/api/user", authRouter);
+app.use("/", (req, res) => {
+  res.json({ msg: "Hello World!" });
+});
 
 //middleware
 app.use(notFound);

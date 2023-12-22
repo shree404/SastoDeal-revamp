@@ -28,23 +28,79 @@ const loginUserCtrl = asyncHandler(async (req, res) => {
       firstname: findUser?.firstname,
       lastname: findUser?.lastname,
       email: findUser?.email,
+      phone: findUser?.phone,
       token: generateToken(findUser?._id),
     });
   } else {
     throw new Error("Invalid Credinatial");
   }
-  console.log(email, password);
+  // console.log(email, password);
+});
+
+//update a user
+const updatedUser = asyncHandler(async (req, res) => {
+  const { _id } = req.user;
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      _id,
+      {
+        firstname: req?.body.firstname,
+        lastname: req?.body.lastname,
+        email: req?.body.email,
+        phone: req?.body.phone,
+      },
+      {
+        new: true,
+      }
+    );
+    //console.log(updatedUser);
+    res.json(updatedUser);
+  } catch (error) {
+    throw new Error(error);
+  }
 });
 
 //Get all user
-const getAllUser = asyncHandler(async (req, res) => {
+const getallUser = asyncHandler(async (req, res) => {
   try {
     const getUsers = await User.find();
-    console.log(getUsers);
+    // console.log(getUsers);
     res.json(getUsers);
   } catch (error) {
     throw new Error(error);
   }
 });
 
-module.exports = { createUser, loginUserCtrl, getAllUser };
+//Get single user
+const getaUser = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  try {
+    const getaUser = await User.findById(id);
+    res.json({ getaUser });
+  } catch (error) {
+    throw new Error(error);
+  }
+
+  // console.log(id);
+});
+
+//Delete a user
+const deleteaUser = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  try {
+    const deleteaUser = await User.findByIdAndDelete(id);
+    res.json({ deleteaUser });
+  } catch (error) {
+    throw new Error(error);
+  }
+  // console.log("delete : ".id);
+});
+
+module.exports = {
+  createUser,
+  loginUserCtrl,
+  getallUser,
+  getaUser,
+  deleteaUser,
+  updatedUser,
+};

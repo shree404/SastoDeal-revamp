@@ -39,8 +39,12 @@ Backend is powered by Node.js, Express, and MongoDB/Mongoose. Follow these simpl
 
 ### Features
 
+Our backend provides the following features:
+
 - **User Account**
+
   - **Register a New User**
+
     - Endpoint: `POST /api/user/register`
     - JSON Payload:
       ```json
@@ -54,6 +58,7 @@ Backend is powered by Node.js, Express, and MongoDB/Mongoose. Follow these simpl
       ```
 
   - **User Login**
+
     - Endpoint: `GET /api/user/login`
     - JSON Payload:
       ```json
@@ -62,6 +67,24 @@ Backend is powered by Node.js, Express, and MongoDB/Mongoose. Follow these simpl
         "password": "YourPassword"
       }
       ```
+
+  - **Get All Users**
+
+    - Endpoint: `GET /api/user/users`
+
+  - **Get a Specific User**
+
+    - Endpoint: `GET /api/user/:id`
+    - **Note**: Requires authentication and admin privileges.
+
+  - **Delete a User**
+
+    - Endpoint: `DELETE /api/user/:id`
+    - **Note**: Requires authentication and admin privileges.
+
+  - **Update a User**
+    - Endpoint: `PUT /api/user/edit-user`
+    - **Note**: Requires authentication.
 
 ### Running the Server
 
@@ -72,3 +95,5 @@ npm run server
 ```
 
 Now, your backend is up and running on the specified port!
+
+For frontend integration, make API calls to the provided endpoints, such as `router.post("/register", createUser);`, `router.post("/login", loginUserCtrl);`, etc.
