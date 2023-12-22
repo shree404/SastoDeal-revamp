@@ -1,19 +1,67 @@
 import React from 'react'
+import { AppBar, Box, InputBase, Toolbar, Typography, styled } from '@mui/material'
+import SearchSharpIcon from '@mui/icons-material/SearchSharp';
+import ShoppingCartOutlined from '@mui/icons-material/ShoppingCartOutlined';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+
+
+const StyleToolbar = styled(Toolbar)({
+    display: "flex",
+    justifyContent: "space-between",
+});
+
+const Search = styled("div")(({ theme }) => ({
+    backgroundColor: "white",
+    padding: "0 10px",
+    borderRadius: "30px",
+    width: "40%",
+    height: "40px",
+    paddingTop: "5px"
+}));
 
 const Navbar = () => {
     return (
-        <div className='flex justify-between bg-[#45A69B] p-1 pl-20 pr-11 max-sm:p-0 max-sm:text-sm'>
-            <div>
-                <p>Welcome to SastoDeal.com! Enjoy Shopping</p>
+        <div>
+            {/* FOR UPPER NAVBAR */}
+            <div className='flex justify-between bg-[#45A69B] p-1 pl-20 pr-11 max-sm:p-0 max-sm:text-sm'>
+                <div>
+                    <p>Welcome to SastoDeal.com! Enjoy Shopping</p>
+                </div>
+
+                <ul className='flex justify-evenly'>
+                    <li>Vendor Login <span>| </span></li>
+                    <li>Sell on Sastodeal <span>| </span></li>
+                    <li>Raise a Ticket <span>| </span></li>
+                    <li>Order Tracking</li>
+                </ul>
+
             </div>
 
-            <ul className='flex justify-evenly'>
-                <li>Vendor Login <span>| </span></li>
-                <li>Sell on Sastodeal <span>| </span></li>
-                <li>Raise a Ticket <span>| </span></li>
-                <li>Order Tracking</li>
-            </ul>
+            {/* FOR LOWER  MAIN NAVBAR */}
+            <div>
 
+                <AppBar position='sticky'  style={{ background: '#613E98' }}>
+                    <StyleToolbar>
+                        <Typography variant='h4' style={{fontWeight:'800'}}>sastodeal.co</Typography>
+                        <Typography variant='body'>Bazar<ArrowDropDownIcon /></Typography>
+                        <Typography variant='body'>Stores</Typography>
+                        <Typography variant='body'>New Arrivals</Typography>
+                        <Typography variant='body'>Brands</Typography>
+
+
+                        <Search><SearchSharpIcon color='action' /> <InputBase placeholder='Search for products...' /></Search>
+                        <ShoppingCartOutlined />
+                        <FavoriteBorderOutlinedIcon />
+
+                        <Typography variant='body'><span>Login</span> | <span>Signup</span><AccountCircleOutlinedIcon /></Typography>
+
+
+
+                    </StyleToolbar>
+                </AppBar>
+            </div>
         </div>
     )
 }
