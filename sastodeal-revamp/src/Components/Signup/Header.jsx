@@ -2,7 +2,7 @@ import React from "react";
 
 function Header() {
   return (
-    <div>
+    <div className="mb-10">
       <div className="text-5xl font-bold flex justify-center mt-10">
         <span className="text-[#613E98]"> sasto</span>
         <span className="text-[#45A69B]">deal</span>
