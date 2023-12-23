@@ -22,7 +22,7 @@ function Carousel_main()
     ]
 
     return (
-        <Carousel sx={{width:"98%", ml:2}}  >
+        <Carousel sx={{width:"98%", ml:2 ,cursor:"pointer"}}  >
             {
                 // items.map( (item, i) => <Item key={i} item={item} /> )
                 items.map((item,i)=>{
