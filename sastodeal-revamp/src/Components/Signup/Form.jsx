@@ -6,11 +6,11 @@ import TextField from "@mui/material/TextField";
 
 function SignUpForm() {
   return (
-    <div className="ml-10 ">
+    <div className="ml-40">
       <div>
-        <h2 className="text-[#45A69B] text-2xl mb-6">Create your Account</h2>
+        <h2 className="text-[#45A69B] text-3xl mb-8">Create your Account</h2>
       </div>
-      <form action="submit" method="post" className="mb-2">
+      <form action="submit" method="post" className="mb-2 gap-20">
         <div className="flex gap-20">
           <span>
             <Box
@@ -140,7 +140,7 @@ function SignUpForm() {
           </Box>
         </span>
       </form>
-      <div className="text-lg mb-3">
+      <div className="text-lg mb-4">
       <div className="flex mb-1">
         <input type="checkbox" name="terms&condition" id="terms&condition" className="w-4 h-4 mr-1"/>{" "}
           <span className="text-[#ABAFB2] mr-1">
@@ -159,7 +159,7 @@ function SignUpForm() {
         </div>
       </div>
       <div className="  ">
-        <button className="bg-[#613E98] text-white  font-bold py-2 px-8 flex justify-center rounded-lg text-lg mb-3">
+        <button className="bg-[#613E98] text-white  font-bold py-2 px-8 flex justify-center rounded-lg text-lg mb-4">
           Register
         </button>
       </div>
