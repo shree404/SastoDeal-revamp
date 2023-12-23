@@ -1,10 +1,9 @@
 
-import "./App.css";
-import Navbar from "./Components/Navbar";
-import Button from "@mui/material/Button";
-import SignUpForm from "./Components/Signup/Form";
+import './App.css';
+import Category from './Components/Category';
 import Footer from './Components/Footer';
-
+import Navbar from './Components/Navbar';
+import Home from './Pages/Home';
 
 
 function App() {
@@ -12,6 +11,7 @@ function App() {
     <div>
 
       <Navbar/>
+      <Home/>
       <Footer/>
     </div>
   );
