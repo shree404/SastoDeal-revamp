@@ -1,15 +1,18 @@
 
 import './App.css';
 import Footer from './Components/Footer';
-
+import Navbar from "./Components/Navbar"
+import NewArrivals from './Pages/NewArrivals';
 
 
 
 function App() {
   return (
     <div>
-
-      <Login/>
+      <Navbar/>
+      <NewArrivals/>
+      <Footer/>
+      {/* <Login/> */}
     </div>
   );
 }
