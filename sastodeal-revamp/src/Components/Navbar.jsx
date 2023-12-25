@@ -1,4 +1,6 @@
-import {React , useEffect , useState} from 'react'
+import { React, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+
 import { AppBar, InputBase, Toolbar, Typography, styled } from '@mui/material'
 import SearchSharpIcon from '@mui/icons-material/SearchSharp';
 import ShoppingCartOutlined from '@mui/icons-material/ShoppingCartOutlined';
@@ -40,12 +42,12 @@ const Navbar = () => {
     return (
         <div>
             {/* FOR UPPER NAVBAR */}
-            <div className='flex justify-between bg-[#45A69B] p-1 pl-20 pr-11 max-sm:p-0 max-sm:text-sm'>
+            <div className='flex justify-between bg-[#45A69B] p-1 pl-20 pr-11 max-sm:p-0 max-sm:flex-col'>
                 <div>
                     <p>Welcome to SastoDeal.com! Enjoy Shopping</p>
                 </div>
 
-                <ul className='flex justify-evenly'>
+                <ul className='flex justify-evenly '>
                     <li>Vendor Login <span>| </span></li>
                     <li>Sell on Sastodeal <span>| </span></li>
                     <li>Raise a Ticket <span>| </span></li>
@@ -57,20 +59,33 @@ const Navbar = () => {
             {/* FOR LOWER  MAIN NAVBAR */}
             <div>
 
-                <AppBar position='' style={{ background: '#613E98'}} className ={`${stickyClass}`}>
+                <AppBar position='' style={{ background: '#613E98' }} className={`${stickyClass}`}>
                     <StyleToolbar>
-                        <Typography variant='h4' style={{ fontWeight: '800' }}>sastodeal.co</Typography>
+                        <Link to="/" onClick={()=>{window.scrollTo(0, 0);}}><Typography variant='h4' style={{ fontWeight: '800' }}>sastodeal.co</Typography></Link>
                         <Typography variant='body'>Bazar<KeyboardArrowDownIcon /></Typography>
                         <Typography variant='body'>Stores</Typography>
-                        <Typography variant='body'>New Arrivals</Typography>
+                        <Link to="/newarrivals"
+                            onClick={() => {
+                                window.scrollTo(0, 0);
+
+                            }}>
+                            <Typography variant='body'>New Arrivals</Typography>
+                        </Link>
                         <Typography variant='body'>Brands</Typography>
 
 
-                        <Search><SearchSharpIcon color='action' /> <InputBase placeholder='Search for products...' sx={{ width: "90%" }} /></Search>
+                        <Search className='max-md:hidden'><SearchSharpIcon color='action' /> <InputBase placeholder='Search for products...' sx={{ width: "90%" }} /></Search>
                         <ShoppingCartOutlined />
                         <FavoriteBorderOutlinedIcon />
 
-                        <Typography variant='body'><span>Login</span> | <span>Signup</span><AccountCircleOutlinedIcon /></Typography>
+                        <Typography variant='body'>
+                            <Link to={"/login"} onClick={() => { window.scrollTo(0, 0); }}>
+                                <span>Login</span></Link> |
+                            <Link to={"/signup"} onClick={() => { window.scrollTo(0, 0); }}>
+                                <span>Signup</span>
+                            </Link>
+                            <AccountCircleOutlinedIcon />
+                        </Typography>
 
 
 

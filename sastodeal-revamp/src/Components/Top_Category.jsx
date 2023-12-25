@@ -66,7 +66,7 @@ const Top_Category = () => {
         <div>
             <Section header = "Shop From Top Categories"/>
 
-            <div className='flex justify-around m-5'>
+            <div className='flex justify-around m-5 max-sm:flex-2'>
                 {
                     products.map((items) => {
                         return (
