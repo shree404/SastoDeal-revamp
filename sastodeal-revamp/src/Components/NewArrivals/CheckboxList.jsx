@@ -41,6 +41,7 @@ export default function CheckboxList(props) {
                                 </IconButton>
                             }
                             disablePadding
+                                                        
                         >
                             <ListItemButton role={undefined} onClick={handleToggle(value)} dense>
                                 <ListItemIcon>
@@ -50,6 +51,7 @@ export default function CheckboxList(props) {
                                         tabIndex={-1}
                                         disableRipple
                                         inputProps={{ 'aria-labelledby': labelId }}
+                                        color="warning"
                                     />
                                 </ListItemIcon>
                                 
