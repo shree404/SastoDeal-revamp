@@ -1,7 +1,7 @@
 const User = require("../models/userModel");
 const { generateToken } = require("../config/jwtToken");
 const asyncHandler = require("express-async-handler");
-const validateMongoDbId = require("../utils/validateMongodbid");
+const validateMongoDbId = require("../utils/validateMongodbId");
 const { generateRefreshToken } = require("../config/refreshToken");
 const jwt = require("jsonwebtoken");
 
