@@ -1,8 +1,19 @@
-import React from "react";
+import React ,{useState} from "react";
 import Rating from "@mui/material/Rating";
 import Stack from "@mui/material/Stack";
 
 function ProductDetail() {
+  const [quantity, setQuantity] = useState(1);
+
+  const decreaseValue = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
+  const increaseValue = () => {
+    setQuantity(quantity + 1);
+  };
   return (
     <div>
       <div>
@@ -75,12 +86,14 @@ function ProductDetail() {
       </div>
       <div className="flex gap-7 mt-7">
       <div>
-        <button className="px-3 py-1 bg-[#ABAFB2]-200 rounded-l ">-</button>
+        <button onClick={decreaseValue} className="px-3 py-1 bg-[#ABAFB2]-200 rounded-l ">-</button>
         <input
           type="text"
+          value={quantity}
+        onChange={(e) => setQuantity(parseInt(e.target.value) || 1)}
           className="px-3 py-1 border border-[#ABAFB2]-300 bg-[#ABAFB2] text-black text-center w-16"
         />
-        <button className="px-3 py-1 bg-[#ABAFB2]-200 rounded-r ">+</button>
+        <button onClick={increaseValue} className="px-3 py-1 bg-[#ABAFB2]-200 rounded-r ">+</button>
       </div>
       <div>
         <button className="bg-[#613E98] text-white  font-bold py-2 px-10 flex justify-center rounded-lg text-lg">Buy Now</button>
