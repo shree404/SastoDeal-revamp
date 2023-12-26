@@ -8,7 +8,7 @@ function MightAlsoLike() {
   return (
     <div>
       <div>
-        <h2 className="text-black text-3xl font-bold flex justify-center ">You might also like</h2>
+        <h2 className="text-black text-3xl font-bold flex justify-center mb-5 ">You might also like</h2>
       </div>
       <div className="flex gap-4">
         <div className="bg-white p-4 rounded shadow-md">

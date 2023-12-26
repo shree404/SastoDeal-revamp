@@ -39,52 +39,170 @@ Backend is powered by Node.js, Express, and MongoDB/Mongoose. Follow these simpl
 
 ### Features
 
-Our backend provides the following features:
+Our backend provides a comprehensive set of features for managing users, products, categories, brands, and coupons. Below is an overview of the main categories in your API:
 
-- **User Account**
+### User
 
-  - **Register a New User**
+- **All Users**
 
-    - Endpoint: `POST /api/user/register`
-    - JSON Payload:
-      ```json
-      {
-        "firstname": "YourFirstName",
-        "lastname": "YourLastName",
-        "email": "your.email@example.com",
-        "password": "YourPassword",
-        "phone": 1234567890
-      }
-      ```
+  - Retrieve a list of all users.
 
-  - **User Login**
+  ```
+  GET - localhost:5000/api/user/users
+  ```
 
-    - Endpoint: `GET /api/user/login`
-    - JSON Payload:
-      ```json
-      {
-        "email": "your.email@example.com",
-        "password": "YourPassword"
-      }
-      ```
+- **A User**
 
-  - **Get All Users**
+  - Retrieve information about a specific user.
 
-    - Endpoint: `GET /api/user/users`
+  ```
+  GET - localhost:5000/api/user/:id
+  ```
 
-  - **Get a Specific User**
+- **Register**
 
-    - Endpoint: `GET /api/user/:id`
-    - **Note**: Requires authentication and admin privileges.
+  - Register a new user.
 
-  - **Delete a User**
+  ```
+  POST - localhost:5000/api/user/register
+  ```
 
-    - Endpoint: `DELETE /api/user/:id`
-    - **Note**: Requires authentication and admin privileges.
+- **Login**
 
-  - **Update a User**
-    - Endpoint: `PUT /api/user/edit-user`
-    - **Note**: Requires authentication.
+  - Authenticate a user.
+
+  ```
+  POST - localhost:5000/api/user/login
+  ```
+
+- **Admin Login**
+
+  - Authenticate an admin user.
+
+  ```
+  POST - localhost:5000/api/user/admin-login
+  ```
+
+- **Logout**
+  - Log out a user.
+  ```
+  GET - localhost:5000/api/user/logout
+  ```
+
+### Product
+
+- **Create Product**
+
+  - Add a new product.
+  - Require `refreshToken` of admin
+
+  ```
+  POST - localhost:5000/api/product/wishlist
+  ```
+
+- **Get a Product**
+
+  - Retrieve information about a specific product.
+
+  ```
+  GET - localhost:5000/api/product/:id
+  ```
+
+- **Delete a Product**
+
+  - Remove a product.
+  - Require `refreshToken` of admin
+
+  ```
+  DELETE - localhost:5000/api/product/:id
+  ```
+
+- **Update a Product**
+  - Modify product details.
+  - Require `refreshToken` of admin
+  ```
+  PUT - localhost:5000/api/product/:id
+  ```
+
+- **Ratings**
+
+  - Add ratings and comments to a product.
+
+- **Get All Products**
+
+  - Retrieve a list of all products.
+
+- **Query**
+
+  - Filter products based on price range.
+
+- **Sorting**
+
+  - Sort products based on specified criteria.
+
+- **Fields Limit**
+  - Retrieve products with limited fields.
+
+### Category
+
+- **Create Category**
+
+  - Add a new product category.
+
+- **Update Category**
+
+  - Modify category details.
+
+- **Delete Category**
+
+  - Remove a product category.
+
+- **Get a Category**
+
+  - Retrieve information about a specific category.
+
+- **Get All Categories**
+  - Retrieve a list of all categories.
+
+### Brand
+
+- **Create Brand**
+
+  - Add a new brand.
+
+- **Update Brand**
+
+  - Modify brand details.
+
+- **Delete Brand**
+
+  - Remove a brand.
+
+- **Get a Brand**
+
+  - Retrieve information about a specific brand.
+
+- **Get All Brands**
+  - Retrieve a list of all brands.
+
+### Coupon
+
+- **Create Coupon**
+
+  - Add a new coupon.
+
+- **Update Coupon**
+
+  - Modify coupon details.
+
+- **Delete Coupon**
+
+  - Remove a coupon.
+
+- **Get a Coupon**
+  - Retrieve information about a specific coupon.
+
+The collection includes various authentication methods such as bearer tokens for user and admin access to secure the endpoints.
 
 ### Running the Server
 

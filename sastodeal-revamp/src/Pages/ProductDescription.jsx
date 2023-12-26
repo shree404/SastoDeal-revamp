@@ -4,11 +4,13 @@ import ProductDetail from "../Components/Product Description/Detail";
 import MiddleSection from "../Components/Product Description/Middlesection";
 import ProductReviews from "../Components/Product Description/ProductReviews";
 import MightAlsoLike from "../Components/Product Description/MightAlsoLike";
+import ProductDetailHeader from "../Components/Product Description/ProductDEtailHeader";
 
 function ProductDescription() {
   return (
-    <div>
-      <div className="flex">
+    <div className="ml-20">
+      <ProductDetailHeader/>
+      <div className="flex gap-10">
         <ProductDetailedImage/>
         <ProductDetail/>
       </div>

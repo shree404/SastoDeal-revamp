@@ -1,11 +1,15 @@
 
 import "./App.css";
+import ProductDetailedImage from "./Components/Product Description/ProductImage";
+
+import ProductDescription from "./Pages/ProductDescription";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Footer from './Components/Footer';
-import Navbar from "./Components/Navbar"
-import NewArrivals from './Pages/NewArrivals';
-import Home from "./Pages/Home";
+// import Footer from './Components/Footer';
+// import Navbar from "./Components/Navbar"
+// import NewArrivals from './Pages/NewArrivals';
+// import Home from "./Pages/Home";
 import Login from "./Pages/Login"
 import Signup from "./Pages/signup"
 import PageNotFound from "./Pages/PageNotFound"
@@ -15,7 +19,7 @@ import ProductDescription from "./Pages/ProductDescription"
 function App() {
   return (
     <div>
-
+{/* 
       
 
       <BrowserRouter>
@@ -30,7 +34,7 @@ function App() {
           <Route path = "*" element = {<PageNotFound/>}/>
         </Routes>
         <Footer />
-      </BrowserRouter> 
+      </BrowserRouter>  */}
     </div>
   );
 }
