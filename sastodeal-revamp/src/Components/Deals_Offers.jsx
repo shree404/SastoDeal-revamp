@@ -5,7 +5,7 @@ import watch from '../Assests/watch.png'
 import laptop from '../Assests/laptop.png'
 import gopro from '../Assests/gopro.png'
 import headphone from '../Assests/headphone.png'
-import camera from '../Assests/phone.png'
+import camera from '../Assests/phone1.png'
 
 const Deals_Offers = () => {
   let item_details = [
@@ -38,24 +38,24 @@ const Deals_Offers = () => {
 
   return (
     <div className='flex  m-10 '>
-      {/* FOR RIGHT SECTION */}
+      {/* FOR LEFT SECTION */}
       <Box sx={{p:4, backgroundColor:"#45A69B", color:"white", alignItems:"center",pb:10}}>
         <Typography variant='h4'>Deals and offers</Typography>
         <Typography variant='body' sx={{ml:7}}>Hygiene equipments</Typography>
         <Box sx={{display:'flex',gap:2, mt:2}}>
-          <Box sx = {{p:2 , backgroundColor:"#613E98", fontWeight:"900", color:"white",height:75 ,width:75}}><Typography variant='body' >04 Days</Typography></Box>
+          <Box sx = {{p:2 , backgroundColor:"#613E98", fontWeight:"700", color:"white",height:75 ,width:75}}><Typography variant='body' >04 Days</Typography></Box>
           
-          <Box sx = {{p:2 , backgroundColor:"#613E98", fontWeight:"900", color:"white",height:75 ,width:75}}><Typography variant='body' >13 Hours</Typography></Box>
+          <Box sx = {{p:2 , backgroundColor:"#613E98", fontWeight:"700", color:"white",height:75 ,width:75}}><Typography variant='body' >13 Hours</Typography></Box>
 
-          <Box sx = {{p:2 , backgroundColor:"#613E98", fontWeight:"900", color:"white",height:75 ,width:75}}><Typography variant='body' >34 Mins</Typography></Box>
+          <Box sx = {{p:2 , backgroundColor:"#613E98", fontWeight:"700", color:"white",height:75 ,width:75}}><Typography variant='body' >34 Mins</Typography></Box>
 
-          <Box sx = {{p:2 , backgroundColor:"#613E98", fontWeight:"900", color:"white",height:75 ,width:75}}><Typography variant='body' >59 Secs</Typography></Box>
+          <Box sx = {{p:2 , backgroundColor:"#613E98", fontWeight:"700", color:"white",height:75 ,width:75}}><Typography variant='body' >59 Secs</Typography></Box>
 
           
           
         </Box>
       </Box>
-      {/* FOR LEFT PRODUCT SECTION */}
+      {/* FOR RIGHT PRODUCT SECTION */}
       <div className='flex  justify-between '>
 
         {
@@ -63,7 +63,7 @@ const Deals_Offers = () => {
             return (
               <Box sx={{border:"1px solid #E0E0E0", textAlign:"center"}}>
                 <Box height={150} width={175} sx={{mb:4}}>
-                  <img src={items.image} height={150} width={150} className='p-5'/>
+                  <img src={items.image} height={175} width={175} className='p-8 '/>
                 </Box>
                 <Typography variant='body' sx={{ textAlign: "right",p:3}}>{items.name}</Typography>
 

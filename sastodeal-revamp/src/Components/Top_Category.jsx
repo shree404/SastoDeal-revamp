@@ -1,5 +1,7 @@
 import React from 'react'
-import { Box, Typography } from '@mui/material'
+import { Box } from '@mui/material'
+
+import Section from './Section';
 
 import Carousel from './Carousel';
 import Cloth_banner from './Cloth_banner';
@@ -22,7 +24,6 @@ import oneplus from '../Assests/oneplus.png'
 import purpet from '../Assests/purpet.png'
 import samsung from '../Assests/samsung.png'
 import whirlpool from "../Assests/whirlpool.png"
-import Section from './Section';
 
 const Top_Category = () => {
     let products = [
@@ -65,13 +66,13 @@ const Top_Category = () => {
         <div>
             <Section header = "Shop From Top Categories"/>
 
-            <div className='flex justify-around m-5'>
+            <div className='flex justify-around m-5 max-sm:flex-2'>
                 {
                     products.map((items) => {
                         return (
                             <Box>
-                                <Box sx={{ height: 150, width: 150, backgroundColor: "#F5F5F5", p: 3.6, borderRadius: "100%", cursor: "pointer" }} className="hover:border border-[#613E98]">
-                                    <img src={items.image} />
+                                <Box sx={{ height: 150, width: 150, backgroundColor: "#F5F5F5", p: 3, borderRadius: "100%", cursor: "pointer" }} className="hover:border border-[#613E98]">
+                                    <img src={items.image} className='m-auto' />
                                 </Box>
                                 <Box sx={{ m: 2, ml: 5 }}>
                                     {items.name}
@@ -87,9 +88,9 @@ const Top_Category = () => {
 
             {/* BANNERS 2*/}
             <Box sx={{ display: "flex", gap: 2, justifyContent: "space-around", m: 5, flex: 1 }}>
-                <img src={banner1_0} />
-                <img src={banner2} />
-                <img src={banner3} />
+                <img src={banner1_0} className='cursor-pointer' />
+                <img src={banner2} className='cursor-pointer' />
+                <img src={banner3}  className='cursor-pointer'/>
 
             </Box>
 

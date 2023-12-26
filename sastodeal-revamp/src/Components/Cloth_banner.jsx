@@ -9,7 +9,7 @@ const Cloth_banner = () => {
   return (
     <div className='flex justify-around'>
         {/* for banner 1 */}
-        <div class="relative">
+        <div className="relative  hover:shadow-xl cursor-pointer">
                 <img src={cloth_banner1} />
                 <div className='absolute top-3 left-72'>
                     <p className=' text-white bg-[#3C4242] w-40 text-center border border-r-2 p-2 font-bold mb-3 ml-8'>Limited Stock</p>
@@ -25,7 +25,7 @@ const Cloth_banner = () => {
         </div>
 
         {/* for banner 2 */}
-        <div class="relative">
+        <div class="relative  hover:shadow-xl cursor-pointer">
                 <img src={cloth_banner2} />
                 <div className='absolute top-10 left-40'>
 
@@ -40,7 +40,7 @@ const Cloth_banner = () => {
         </div>
 
         {/* for banner 3 */}
-        <div class="relative">
+        <div class="relative  hover:shadow-xl cursor-pointer">
                 <img src={cloth_banner3} />
                 <div className='absolute top-10 left-5'>
 
