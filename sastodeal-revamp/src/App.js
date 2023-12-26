@@ -1,5 +1,9 @@
 
-import './App.css';
+import "./App.css";
+import ProductDetailedImage from "./Components/Product Description/ProductImage";
+import Login from "./Pages/Login";
+import ProductDescription from "./Pages/ProductDescription";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Footer from './Components/Footer';
@@ -10,9 +14,13 @@ import Login from "./Pages/Login"
 import Signup from "./Pages/signup"
 
 
+
 function App() {
   return (
     <div>
+
+      <ProductDescription/>
+
       {/* <Navbar/>
       <Home/>
       <NewArrivals/>
