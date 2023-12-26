@@ -202,7 +202,7 @@ function SignUpForm() {
           <span className="text-[#613E98]"> Notification Settings.</span>
         </div>
       </div>
-      <div className=" mb-4 flex gap-4 ">
+      <div className=" mb-4 flex gap-10 ">
         <button className="bg-[#613E98] text-white  font-bold py-2 px-8 flex justify-center rounded-lg text-lg">
           Register
         </button>

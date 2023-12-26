@@ -78,10 +78,13 @@ function LoginForm() {
           <p className="text-white "> dhd</p>
           <p className="text-[#613E98] ">Forget Password ?</p>
         </div>
-        <div>
+        <div className="flex gap-10">
           <button className="bg-[#613E98] text-white  font-bold py-2 px-8 flex justify-center rounded-lg text-lg mb-4">
             Login
           </button>
+          <button className="text-black bg-white border-[#613E98] font-bold py-2 px-6 flex justify-center rounded-lg ">
+          Back
+        </button>
         </div>
       </form>
     </div>
