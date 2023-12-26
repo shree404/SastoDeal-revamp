@@ -8,6 +8,7 @@ const authRouter = require("./routes/authRoute");
 const productRouter = require("./routes/productRoute");
 const productcategoryRouter = require("./routes/productcategoryRoute");
 const brandRouter = require("./routes/brandRoute");
+const couponRouter = require("./routes/couponRoute");
 const { notFound, errorHandler } = require("./middlewares/errorHandler");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
@@ -19,7 +20,12 @@ const corsOptions = {
   credentials: true,
 };
 
+if (dotenv.error) {
+  console.log("Error loading .env file:", dotenv.error);
+}
+
 app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 
 dbConnect();
 
@@ -31,6 +37,7 @@ app.use("/api/user", authRouter);
 app.use("/api/product", productRouter);
 app.use("/api/category", productcategoryRouter);
 app.use("/api/brand", brandRouter);
+app.use("/api/coupon", couponRouter);
 app.use("/", (req, res) => {
   res.json({ msg: "Hello World!" });
 });

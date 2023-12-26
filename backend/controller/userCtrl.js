@@ -40,12 +40,47 @@ const loginUserCtrl = asyncHandler(async (req, res) => {
     });
 
     res.json({
-      id: findUser?.id,
+      _id: findUser?._id,
       firstname: findUser?.firstname,
       lastname: findUser?.lastname,
       email: findUser?.email,
       phone: findUser?.phone,
       token: generateToken(findUser?._id),
+    });
+  } else {
+    throw new Error("Invalid Credinatial");
+  }
+  // console.log(email, password);
+});
+
+//admin login controller
+const loginAdminCtrl = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+  //check if user exist
+  const findAdmin = await User.findOne({ email });
+  // console.log(findAdmin);
+  if (findAdmin.role !== "admin") throw new Error("Not authorized!");
+  if (findAdmin && (await findAdmin.isPasswordMatched(password))) {
+    const refreshToken = await generateRefreshToken(findAdmin?._id);
+    const updateadmin = await User.findByIdAndUpdate(
+      findAdmin.id,
+      {
+        refreshToken: refreshToken,
+      },
+      { new: true }
+    );
+    res.cookie("refreshToken", refreshToken, {
+      httpOnly: true,
+      maxAge: 72 * 60 * 60 * 1000,
+    });
+
+    res.json({
+      _id: findAdmin?._id,
+      firstname: findAdmin?.firstname,
+      lastname: findAdmin?.lastname,
+      email: findAdmin?.email,
+      phone: findAdmin?.phone,
+      token: generateToken(findAdmin?._id),
     });
   } else {
     throw new Error("Invalid Credinatial");
@@ -162,13 +197,26 @@ const deleteaUser = asyncHandler(async (req, res) => {
   // console.log("delete : ".id);
 });
 
+//get Wishlist
+const getWishlist = asyncHandler(async (req, res) => {
+  const { _id } = req.user;
+  try {
+    const findUser = await User.findById(_id).populate("wishlist");
+    res.json(findUser);
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
 module.exports = {
   createUser,
   loginUserCtrl,
+  loginAdminCtrl,
   getallUser,
   getaUser,
   deleteaUser,
   updatedUser,
   handleRefreshToken,
   logout,
+  getWishlist,
 };
