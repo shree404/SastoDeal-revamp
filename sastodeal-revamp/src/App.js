@@ -1,7 +1,7 @@
 
 import "./App.css";
 import ProductDetailedImage from "./Components/Product Description/ProductImage";
-import Login from "./Pages/Login";
+
 import ProductDescription from "./Pages/ProductDescription";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -26,7 +26,7 @@ function App() {
       <NewArrivals/>
       <Footer/>
       <Login/> */}
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Navbar />
         <Routes>
           <Route path="/" element={< Home />}/>
@@ -36,7 +36,7 @@ function App() {
           
         </Routes>
         <Footer />
-      </BrowserRouter>
+      </BrowserRouter> */}
     </div>
   );
 }
