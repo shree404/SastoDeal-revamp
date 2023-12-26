@@ -1,16 +1,54 @@
-import React from "react";
+import React , { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-brands-svg-icons";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
 function SignUpForm() {
+
+  const [formData, setFormData] = useState({
+    firstname: '',
+    lastname: '',
+    email: '',
+    phone: '',
+    password: '',
+    confirmpassword: '',
+  });
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!formData.firstname || !formData.lastname || !formData.email || !formData.phone || !formData.password || !formData.confirmpassword) {
+      alert('Please fill in all fields');
+      return;
+    }
+
+    if (formData.password !== formData.confirmpassword) {
+      alert('Passwords do not match');
+      return;
+    }
+    console.log('Signup successful!');
+    console.log(formData);
+    setFormData({
+      firstname: '',
+      lastname: '',
+      email: '',
+      phone: '',
+      password: '',
+      confirmpassword: '',
+    });
+  };
   return (
     <div className="ml-40">
       <div>
         <h2 className="text-[#45A69B] text-3xl mb-8">Create your Account</h2>
       </div>
-      <form action="submit" method="post" className="mb-2 gap-20">
+      <form action="submit" method="post" onSubmit={handleSubmit} className="mb-2 gap-20">
         <div className="flex gap-20">
           <span>
             <Box
@@ -28,6 +66,7 @@ function SignUpForm() {
                   label="First Name"
                   placeholder="First Name"
                   name="firstname"
+                  value={formData.firstname} onChange={handleChange}
                 />
               </div>
             </Box>
@@ -48,6 +87,7 @@ function SignUpForm() {
                   label="Last Name"
                   placeholder="Last Name"
                   name="lastname"
+                  value={formData.lastname} onChange={handleChange}
                 />
               </div>
             </Box>
@@ -71,6 +111,7 @@ function SignUpForm() {
                   placeholder="Email"
                   name="email"
                   type="email"
+                  value={formData.email} onChange={handleChange}
                 />
               </div>
             </Box>
@@ -90,8 +131,9 @@ function SignUpForm() {
                   id="outlined-required"
                   label="Phone number"
                   placeholder="phone number"
-                  name="phonenumber"
+                  name="phone"
                   type="tel"
+                  value={formData.phone} onChange={handleChange}
                 />
               </div>
             </Box>
@@ -109,11 +151,12 @@ function SignUpForm() {
             <div>
               <TextField
                 required
-                id="outlined-required"
+                id="password"
                 label="Password"
                 placeholder="Password"
                 name="password"
                 type="password"
+                value={formData.password} onChange={handleChange}
               />
             </div>
           </Box>
@@ -135,6 +178,7 @@ function SignUpForm() {
                 placeholder="Confirm Password"
                 name="confirmpassword"
                 type="password"
+                value={formData.confirmpassword} onChange={handleChange}
               />
             </div>
           </Box>
@@ -158,9 +202,12 @@ function SignUpForm() {
           <span className="text-[#613E98]"> Notification Settings.</span>
         </div>
       </div>
-      <div className="  ">
-        <button className="bg-[#613E98] text-white  font-bold py-2 px-8 flex justify-center rounded-lg text-lg mb-4">
+      <div className=" mb-4 flex gap-4 ">
+        <button className="bg-[#613E98] text-white  font-bold py-2 px-8 flex justify-center rounded-lg text-lg">
           Register
+        </button>
+        <button className="text-black bg-white border-[#613E98] font-bold py-2 px-6 flex justify-center rounded-lg ">
+          Back
         </button>
       </div>
       <div>
