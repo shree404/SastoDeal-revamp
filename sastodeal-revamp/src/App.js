@@ -2,7 +2,7 @@
 import "./App.css";
 import ProductDetailedImage from "./Components/Product Description/ProductImage";
 
-// import ProductDescription from "./Pages/ProductDescription";
+import ProductDescription from "./Pages/ProductDescription";
 
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -20,7 +20,7 @@ function App() {
   return (
     <div>
 
-      <Login/>
+      <ProductDescription/>
 
       {/* <Navbar/>
       <Home/>
