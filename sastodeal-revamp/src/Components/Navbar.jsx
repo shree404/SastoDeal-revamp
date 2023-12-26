@@ -61,9 +61,14 @@ const Navbar = () => {
 
                 <AppBar position='' style={{ background: '#613E98' }} className={`${stickyClass}`}>
                     <StyleToolbar>
-                        <Link to="/" onClick={()=>{window.scrollTo(0, 0);}}><Typography variant='h4' style={{ fontWeight: '800' }}>sastodeal.co</Typography></Link>
-                        <Typography variant='body'>Bazar<KeyboardArrowDownIcon /></Typography>
-                        <Typography variant='body'>Stores</Typography>
+                        <Link to="/" onClick={() => { window.scrollTo(0, 0); }}>
+                            <Typography variant='h4' style={{ fontWeight: '800' }}>sastodeal.co</Typography>
+                        </Link>
+                        <Link to="/bazar" onClick={() => { window.scrollTo(0, 0); }}>
+                            <Typography variant='body'>Bazar<KeyboardArrowDownIcon /></Typography>
+                        </Link>
+
+                        <Link to = "/stores" onClick={() => { window.scrollTo(0, 0); }}><Typography variant='body'>Stores</Typography></Link>
                         <Link to="/newarrivals"
                             onClick={() => {
                                 window.scrollTo(0, 0);
@@ -71,12 +76,20 @@ const Navbar = () => {
                             }}>
                             <Typography variant='body'>New Arrivals</Typography>
                         </Link>
-                        <Typography variant='body'>Brands</Typography>
+
+                        <Link to="/brands" onClick={() => { window.scrollTo(0, 0); }}>
+                            <Typography variant='body'>Brands</Typography>
+                        </Link>
 
 
-                        <Search className='max-md:hidden'><SearchSharpIcon color='action' /> <InputBase placeholder='Search for products...' sx={{ width: "90%" }} /></Search>
-                        <ShoppingCartOutlined />
-                        <FavoriteBorderOutlinedIcon />
+                        <Search className='max-md:hidden'><SearchSharpIcon color='action' />
+
+                            <InputBase placeholder='Search for products...' sx={{ width: "90%" }} />
+                        </Search>
+
+                        <Link to = {"/cart"}onClick={() => { window.scrollTo(0, 0); }}><ShoppingCartOutlined /></Link>
+
+                        <Link to={"/favorite"} onClick={() => { window.scrollTo(0, 0); }}><FavoriteBorderOutlinedIcon /></Link>
 
                         <Typography variant='body'>
                             <Link to={"/login"} onClick={() => { window.scrollTo(0, 0); }}>
@@ -84,7 +97,9 @@ const Navbar = () => {
                             <Link to={"/signup"} onClick={() => { window.scrollTo(0, 0); }}>
                                 <span>Signup</span>
                             </Link>
-                            <AccountCircleOutlinedIcon />
+                            <Link to = {"/account"} onClick={() => { window.scrollTo(0, 0); }}>
+                                <AccountCircleOutlinedIcon sx = {{ml:1}} />
+                            </Link>
                         </Typography>
 
 
