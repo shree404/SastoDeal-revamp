@@ -88,14 +88,6 @@ Our backend provides a comprehensive set of features for managing users, product
   ```
   GET - localhost:5000/api/user/logout
   ```
-  <!--
-- **Wishlist**
-  - Retrieve the wishlist of a user.
-  - Require `refreshToken` of admin
-  ```
-  GET - localhost:5000/api/user/wishlist
-  ```
-  -->
 
 ### Product
 
@@ -131,10 +123,7 @@ Our backend provides a comprehensive set of features for managing users, product
   ```
   PUT - localhost:5000/api/product/:id
   ```
-  <!--
-- **Add to Wishlist**
-  - Add a product to a user's wishlist.
-    -->
+
 - **Ratings**
 
   - Add ratings and comments to a product.
