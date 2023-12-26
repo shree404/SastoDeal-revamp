@@ -1,14 +1,34 @@
-import React from "react";
+import React , {useState} from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
 function LoginForm() {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Login successful!');
+    console.log(formData);
+
+    setFormData({
+      email: '',
+      password: '',
+    });
+  };
   return (
     <div className="ml-40">
       <div>
         <h2 className="text-[#45A69B] text-3xl mb-8">Login your Account</h2>
       </div>
-      <form action="submit" method="post" className="mb-2 gap-20">
+      <form action="submit" method="post" onSubmit={handleSubmit} className="mb-2 gap-20">
         <span className="mb-5">
           <Box
             component="form"
@@ -26,6 +46,7 @@ function LoginForm() {
                 placeholder="Email"
                 name="email"
                 type="email"
+                value={formData.email} onChange={handleChange}
               />
             </div>
           </Box>
@@ -47,6 +68,7 @@ function LoginForm() {
                 placeholder="Password"
                 name="password"
                 type="password"
+                value={formData.password} onChange={handleChange}
               />
             </div>
           </Box>
