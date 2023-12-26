@@ -1,4 +1,4 @@
-import React ,{useState} from "react";
+import React, { useState } from "react";
 import Rating from "@mui/material/Rating";
 import Stack from "@mui/material/Stack";
 
@@ -67,40 +67,44 @@ function ProductDetail() {
         <p className="mb-5"> Choose Size</p>
       </div>
       <div className="flex mb-5">
-        <button className="bg-[#ABAFB2] text-black   py-2 px-4 flex justify-center rounded-lg mr-2">
+        <button className="bg-[#F0F0F0] text-black   py-2 px-4 flex justify-center rounded-xl mr-2 hover:bg-[#613E98] hover:text-white">
           Small{" "}
         </button>
 
-        <button className="bg-[#ABAFB2] text-black   py-2 px-6 flex justify-center rounded-lg mr-2">
+        <button className="bg-[#F0F0F0] text-black   py-2 px-6 flex justify-center rounded-2xl mr-2 hover:bg-[#613E98] hover:text-white">
           Medium{" "}
         </button>
-        <button className="bg-[#ABAFB2] text-black  py-2 px-4 flex justify-center rounded-lg mr-2 ">
+        <button className="bg-[#F0F0F0] text-black  py-2 px-4 flex justify-center rounded-2xl mr-2 hover:bg-[#613E98] hover:text-white">
           Large{" "}
         </button>
-        <button className="bg-[#ABAFB2] text-black   py-2 px-6 flex justify-center rounded-lg ">
+        <button className="bg-[#F0F0F0] text-black   py-2 px-6 flex justify-center rounded-2xl hover:bg-[#613E98] hover:text-white">
           X-Large{" "}
         </button>
       </div>
       <div>
         <hr className="border-t-30 border-black-500 my-4 w-full  mr-7"></hr>
       </div>
+
+
       <div className="flex gap-7 mt-7">
-      <div>
-        <button onClick={decreaseValue} className="px-3 py-1 bg-[#ABAFB2]-200 rounded-l ">-</button>
-        <input
-          type="text"
-          value={quantity}
-        onChange={(e) => setQuantity(parseInt(e.target.value) || 1)}
-          className="px-3 py-1 border border-[#ABAFB2]-300 bg-[#ABAFB2] text-black text-center w-16"
-        />
-        <button onClick={increaseValue} className="px-3 py-1 bg-[#ABAFB2]-200 rounded-r ">+</button>
-      </div>
-      <div>
-        <button className="bg-[#613E98] text-white  font-bold py-2 px-10 flex justify-center rounded-lg text-lg">Buy Now</button>
-      </div>
-      <div>
-        <button className="bg-[#613E98] text-white  font-bold py-2 px-10 flex justify-center rounded-lg text-lg">Add to Cart</button>
-      </div>
+        <div className="bg-[#F0F0F0] rounded-2xl p-2">
+          <button onClick={decreaseValue} className="px-3 py-1 bg-[#F0F0F0]-200 rounded-2xl ">-</button>
+          <input
+            type="text"
+            value={quantity}
+            onChange={(e) => setQuantity(parseInt(e.target.value) || 1)}
+            className="px-3 py-1 border border-[#F0F0F0]-300 bg-[#F0F0F0] text-black text-center w-16"
+          />
+          <button onClick={increaseValue} className="px-3 py-1 bg-[#F0F0F0] rounded-r ">+</button>
+        </div>
+
+
+        <div>
+          <button className="bg-[#613E98] text-white  font-bold py-2 px-10 flex justify-center rounded-lg text-lg">Buy Now</button>
+        </div>
+        <div>
+          <button className="bg-[#613E98] text-white  font-bold py-2 px-10 flex justify-center rounded-lg text-lg">Add to Cart</button>
+        </div>
       </div>
     </div>
   );

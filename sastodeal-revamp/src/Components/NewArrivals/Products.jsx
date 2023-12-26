@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import {Link} from "react-router-dom"
 import { Box, Typography, Pagination } from '@mui/material'
 import AppsIcon from '@mui/icons-material/Apps';
 import GridViewIcon from '@mui/icons-material/GridView';
@@ -73,53 +74,55 @@ const Products = () => {
                         {
                             products.map((item) => {
                                 return (
-                                    <Box className="hover:shadow-lg m-auto cursor-pointer mb-10">
-                                        <div>
-                                            {
-                                                Loading ? (
-                                                    <Skeleton variant="rectangular" width={250} height={300} />
-                                                ) : (
-                                                    <img src={item.image} alt="" />
-                                                )
-                                            }
-                                        </div>
-                                        <Box sx={{ p: 2 }}>
-                                            <div className='text-lg font-bold text-[#1C1C1C]'>
+                                    <Link to ="/product" onClick={() => { window.scrollTo(0, 0); }}>
+                                        <Box className="hover:shadow-lg m-auto cursor-pointer mb-10">
+                                            <div>
                                                 {
                                                     Loading ? (
-
-                                                        <Skeleton variant="rectangular" width={150} height={40} sx={{ mt: 1 }} />
+                                                        <Skeleton variant="rectangular" width={250} height={300} />
                                                     ) : (
-                                                        <h1>{item.name}</h1>
-
+                                                        <img src={item.image} alt="" />
                                                     )
                                                 }
-                                                <div className='flex gap-10'>
+                                            </div>
+                                            <Box sx={{ p: 2 }}>
+                                                <div className='text-lg font-bold text-[#1C1C1C]'>
                                                     {
                                                         Loading ? (
 
-                                                            <Skeleton variant="rectangular" width={100} height={10} sx={{mt:1}}/>
+                                                            <Skeleton variant="rectangular" width={150} height={40} sx={{ mt: 1 }} />
                                                         ) : (
-                                                            <><p>Rs. 99.50</p><span className=' text-[#8B96A5] font-thin line-through'>Rs.1128.00</span></>
+                                                            <h1>{item.name}</h1>
+
+                                                        )
+                                                    }
+                                                    <div className='flex gap-10'>
+                                                        {
+                                                            Loading ? (
+
+                                                                <Skeleton variant="rectangular" width={100} height={10} sx={{ mt: 1 }} />
+                                                            ) : (
+                                                                <><p>Rs. 99.50</p><span className=' text-[#8B96A5] font-thin line-through'>Rs.1128.00</span></>
+                                                            )
+                                                        }
+                                                    </div>
+                                                </div>
+
+                                                <div className='flex '>
+                                                    {
+                                                        Loading ? (
+
+                                                            <Skeleton variant="rectangular" width={150} height={10} sx={{ mt: 1 }} />
+                                                        ) : (
+                                                            <>                                          <Ratings />
+                                                                <FavoriteBorderIcon className='text-[#613E98]' />
+                                                            </>
                                                         )
                                                     }
                                                 </div>
-                                            </div>
-
-                                            <div className='flex '>
-                                                {
-                                                    Loading ? (
-
-                                                        <Skeleton variant="rectangular" width={150} height={10} sx={{ mt: 1 }} />
-                                                    ) : (
-                                                        <>                                          <Ratings />
-                                                            <FavoriteBorderIcon className='text-[#613E98]' />
-                                                        </>
-                                                    )
-                                                }
-                                            </div>
+                                            </Box>
                                         </Box>
-                                    </Box>
+                                    </Link>
                                 )
                             })
                         }

@@ -1,10 +1,9 @@
 import React from "react";
 import ProductDetailedImage from "../Components/Product Description/ProductImage";
 import ProductDetail from "../Components/Product Description/Detail";
-import MiddleSection from "../Components/Product Description/Middlesection";
-import ProductReviews from "../Components/Product Description/ProductReviews";
 import MightAlsoLike from "../Components/Product Description/MightAlsoLike";
 import ProductDetailHeader from "../Components/Product Description/ProductDEtailHeader";
+import Tabs from "../Components/Product Description/Tabs"
 
 function ProductDescription() {
   return (
@@ -14,8 +13,7 @@ function ProductDescription() {
         <ProductDetailedImage/>
         <ProductDetail/>
       </div>
-      <MiddleSection/>
-      <ProductReviews/>
+      <Tabs/>
       <MightAlsoLike/>
     </div>
   );
