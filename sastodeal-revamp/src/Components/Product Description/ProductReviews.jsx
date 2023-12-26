@@ -12,7 +12,7 @@ function ProductReviews() {
         <h2 className="text-black font-bold text-xl "> All Reviews</h2>
         <p className="text-[#ABAFB2]">(451)</p>
         </div>
-        <div className="flex justify-end gap-3 mb-4" >
+        <div className="flex justify-end gap-3 mb-4 mr-20" >
           <button className="bg-[#F0F0F0] flex justify-center rounded-lg py-2 px-2 mr-2">
             <img src={frame} alt="filter option" />
           </button>
