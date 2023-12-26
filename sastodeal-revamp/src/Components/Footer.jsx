@@ -39,7 +39,7 @@ const Footer = () => {
                     </Grid>
 
                     <Grid sx={{display:"flex", flexDirection:"column", gap:2}} item >
-                        <Typography variant='h6'>COMPANY</Typography>
+                        <Typography variant='h6' sx={{letterSpacing:"3px"}}>COMPANY</Typography>
                         <Typography variant='body'> About Us</Typography>
                         <Typography variant='body'> Careers @SD</Typography>
                         <Typography variant='body'> Advertise on SD</Typography>
@@ -48,8 +48,8 @@ const Footer = () => {
                     </Grid>
 
                     
-                    <Grid sx={{display:"flex", flexDirection:"column", gap:2}} item >
-                        <Typography variant='h6'>ACCOUNT</Typography>
+                    <Grid sx={{display:"flex", flexDirection:"column", gap:3}} item >
+                        <Typography variant='h6' sx={{letterSpacing:"3px"}}>CONTACT US</Typography>
                         <Typography variant='body'> Customer Care</Typography>
                         <Typography variant='body'> Delivery and Return</Typography>
                         <Typography variant='body'> Terms and Conditions</Typography>
@@ -60,8 +60,8 @@ const Footer = () => {
 
 
                     
-                    <Grid sx={{display:"flex", flexDirection:"column", gap:2}} item >
-                        <Typography variant='h6'>ACCOUNT</Typography>
+                    <Grid sx={{display:"flex", flexDirection:"column", gap:3}} item >
+                        <Typography variant='h6' sx={{letterSpacing:'3px'}}>ACCOUNT</Typography>
                         <Typography variant='body'> Edit Account</Typography>
                         <Typography variant='body'> Manage Deliveries</Typography>
                         <Typography variant='body'> Orders</Typography>
@@ -70,7 +70,7 @@ const Footer = () => {
                     </Grid>
 
                     <Grid item sx={{display:"flex" , flexDirection:"column" , gap:2}}>
-                        <Typography variant='h6'>For better Shopping <br/>experience Download <br/>Sastodeal app</Typography>
+                        <Typography variant='h6' sx={{letterSpacing:"2px"}}>For better Shopping <br/>experience Download <br/>Sastodeal app</Typography>
                         <Box>
                             <img src={qr}/>
                             <FavoriteBorderIcon sx={{marginLeft:7,marginTop:-40, backgroundColor:"white",height:30,width:30,p:.5}}/>
