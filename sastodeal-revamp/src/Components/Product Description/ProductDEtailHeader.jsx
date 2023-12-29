@@ -7,13 +7,13 @@ function ProductDetailHeader(){
             <div className='flex gap-3'>
                 <p className="text-[#ABAFB2]">Home</p>
                 <p>
-                    <img src={arrow} alt="arrow" />
+                    <img src={arrow} alt="arrow" className='h-5 w-5' />
                 </p>
                 <p className="text-[#ABAFB2]">
                     Men
                 </p>
                 <p>
-                    <img src={arrow} alt="arroww" />
+                    <img src={arrow} alt="arroww"  className='h-5 w-5'/>
                 </p>
                 <p className='text-black font-bold'>
                     T-shirt

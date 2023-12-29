@@ -31,7 +31,7 @@ function PersonalInfoSection(){
                 </div>
                 <div className="w-30 h-10 bg-[#F6F6F6] rounded-lg mt-5 ">
                 <div className='flex gap-8 '>
-                <div className="w-1 h-10 bg-black rounded "></div>
+                <div className="w-1 h-10 bg-black rounded pt-2"></div>
                     <img src={user} alt="User icon"  className='h-6 w-6   '/>
                     <p className='text-[#807D7E] font-bold text-ls' >My info</p>
                     </div>

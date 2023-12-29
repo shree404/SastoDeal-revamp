@@ -5,7 +5,7 @@ import PersonalInfoHeader from '../Components/Personal Info/PersonalinfoHeader';
 
 function PersonalInfo(){
     return(
-        <div>
+        <div className='ml-20'>
             <PersonalInfoHeader/>
             <div className='flex gap-10'>
             <PersonalInfoSection/>
