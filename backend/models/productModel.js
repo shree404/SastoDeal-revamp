@@ -10,7 +10,7 @@ var productSchema = new mongoose.Schema(
     },
     slug: {
       type: String,
-      required: true,
+      // required: true,
       unique: true,
       lowercase: true,
     },
@@ -25,7 +25,6 @@ var productSchema = new mongoose.Schema(
     category: {
       type: String,
       required: true,
-      ref: "Category",
     },
     quantity: {
       type: Number,
@@ -33,7 +32,6 @@ var productSchema = new mongoose.Schema(
     },
     brand: {
       type: String,
-      enum: ["Samsung", "Apple", "HTC"],
       required: true,
     },
     sold: {
