@@ -13,6 +13,7 @@ import ProductDescription from "./Pages/ProductDescription";
 import Login from "./Pages/Login"
 import Signup from "./Pages/signup"
 import PageNotFound from "./Pages/PageNotFound"
+import PersonalInfo from "./Pages/PersonalInfo";
 
 
 
@@ -20,7 +21,7 @@ function App() {
   return (
     <div>
 
-      <ProductDescription/>
+      <PersonalInfo/>
 
       {/* <Navbar/>
       <Home/>
