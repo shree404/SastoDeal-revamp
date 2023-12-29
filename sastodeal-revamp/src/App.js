@@ -3,20 +3,24 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Footer from './Components/Footer';
-import Navbar from "./Components/Navbar"
+import Navbar from "./Components/Navbar";
 import NewArrivals from './Pages/NewArrivals';
 import Home from "./Pages/Home";
 import Login from "./Pages/Login"
 import Signup from "./Pages/signup"
 import PageNotFound from "./Pages/PageNotFound"
 import ProductDescription from "./Pages/ProductDescription"
+import AddToCart from "./Pages/AddToCart"
 
 
 function App() {
   return (
     <div>
+      {/* <Navbar/>
+      <AddToCart/>
+      <Footer/> */}
       
-
+ 
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -25,11 +29,12 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={ <Signup />} />
           <Route path="/product" element={ <ProductDescription />} />
+          <Route path = "/cart" element = {<AddToCart/>}/>
           
           <Route path = "*" element = {<PageNotFound/>}/>
         </Routes>
         <Footer />
-      </BrowserRouter>  
+      </BrowserRouter>   
     </div>
   );
 }
