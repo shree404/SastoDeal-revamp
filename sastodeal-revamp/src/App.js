@@ -17,6 +17,7 @@ import AddToCart from "./Pages/AddToCart";
 function App() {
   return (
     <div>
+
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -33,13 +34,9 @@ function App() {
         <Footer />
       </BrowserRouter>
       <BrowserRouter>
+
         <Routes>
           <Route path="/signup" element={<Signup />} />
-          <Route path="/product" element={<ProductDescription />} />
-          <Route path="/cart" element={<AddToCart />} />
-          <Route path="/account" element={<PersonalInfo />} />
-
-          <Route path="*" element={<PageNotFound />} />
         </Routes>
         <Footer />
       </BrowserRouter>

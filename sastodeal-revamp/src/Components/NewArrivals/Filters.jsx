@@ -1,90 +1,122 @@
-import React from 'react'
-import { Box, Typography,Button } from '@mui/material'
+import React, { useState,useEffect } from 'react';
+import { Box, Typography, Button } from '@mui/material';
 import CheckboxList from './CheckboxList';
-import Size from './Size'
-import Color from './Color'
-import Brands from './Brands'
-import Price from './Price'
 
-var details_department = [
-    {
-        name: "Men",
-        num: 230
-    },
-    {
-        name: "Kids",
-        num: 45
-    }, {
-        name: "Women",
-        num: 102
-    }, {
-        name: "Big and Tall",
-        num: 16
-    }
-]
-var details_category = [
-    {
-        name: "Tees",
-        num: 230
-    },
-    {
-        name: "Accessires",
-        num: 45
-    }, {
-        name: "Polos",
-        num: 102
-    }, {
-        name: "Sweetshirts and Hoodles",
-        num: 22
-    }, {
-        name: "Pants",
-        num: 43
-    }, {
-        name: "Jackets",
-        num: 34
-    }, {
-        name: "Sweaters",
-        num: 9
-    }, {
-        name: "Shorts",
-        num: 9
-    }, {
-        name: "Swimwear",
-        num: 29
-    }, {
-        name: "Casual Shirt",
-        num: 18
-    }, {
-        name: "Lounge and Underwear",
-        num: 106
-    }
-]
+import RadioList from './RadioList';
+import Size from './Size';
+import Color from './Color';
+import Brands from './Brands';
+import Price from './Price';
+import axios from 'axios';
 
 const Filters = () => {
+    const [filters, setFilters] = useState({
+   //   department: [],
+      category: [],
+    //  size: [],
+      color: [],
+      brand: [],
+      price: [],
+    });
+  
+    const [categoryOptions, setCategoryOptions] = useState([]);
+    const [brandOptions, setBrandOptions] = useState([]);
+  
+    useEffect(() => {
+      // Fetch category options from the API
+      const fetchCategoryOptions = async () => {
+        try {
+          const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/category`);
+          setCategoryOptions(response.data);
+          console.log(response.data);
+        } catch (error) {
+          console.error('Error fetching category options:', error);
+        }
+      };
+  
+      // Fetch category options from the API
+      const fetchBrandOptions = async () => {
+        try {
+          const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/brand`);
+          setBrandOptions(response.data);
+          console.log(response.data);
+        } catch (error) {
+          console.error('Error fetching brand options:', error);
+        }
+      };
+  
+      fetchCategoryOptions();
+      fetchBrandOptions();
+    }, []);
+  
 
-    return (
-        <div>
-            <Box>
-                <div className='flex justify-between w-[100%]'>
-                    <Typography variant='h6' sx={{ fontWeight: "500",ml:1.5 }}>Filter</Typography>
-                    <Typography sx={{ textDecoration: "underline", color: "#7C3FFF", textDecorationColor: "#7C3FFF", cursor: "pointer" }}>Reset All</Typography>
+  const handleSaveFilters = async () => {
+    try {
+      // Convert the filters object into query parameters
+      const queryParams = new URLSearchParams(filters);
 
-                </div>
-                    <hr className='h-2 w-80% text-[#E4E4E4] mt-10 mb-2' />
+      // Make a request to fetch filtered products from the backend
+      const response = await axios.get(`/api/product?${queryParams}`);
 
-                <Box>
-                    <CheckboxList details={details_department} title="Department" />
-                    <CheckboxList details={details_category} title="Category" />
-                    <Size />
-                    <Color/>
-                    <Brands/>
-                    <Price/>
-                </Box>
+      // Process the response (set products state, etc.)
+      console.log('Filtered Products:', response.data);
+    } catch (error) {
+      console.error('Error fetching filtered products:', error);
+    }
+  };
 
-                <Button variant="outlined" style={{color:"#7C3FFF",borderColor:"#7C3FFF",width:"100%",padding:"10px"}}>Save</Button>
-            </Box>
+  const handleResetFilters = () => {
+    // Reset all filters to their initial state
+    setFilters({
+    //  department: [],
+      category: [],
+    //  size: [],
+      color: [],
+      brand: [],
+      price: [],
+    });
+  };
+
+  return (
+    <div>
+      <Box>
+        <div className="flex justify-between w-[100%]">
+          <Typography variant="h6" sx={{ fontWeight: '500', ml: 1.5 }}>
+            Filter
+          </Typography>
+          <Typography
+            sx={{
+              textDecoration: 'underline',
+              color: '#7C3FFF',
+              textDecorationColor: '#7C3FFF',
+              cursor: 'pointer',
+            }}
+            onClick={handleResetFilters}
+          >
+            Reset All
+          </Typography>
         </div>
-    )
-}
+        <hr className="h-2 w-80% text-[#E4E4E4] mt-10 mb-2" />
+
+        <Box>
+          {/* <CheckboxList details={details_department} title="Department" onChange={(values) => setFilters({ ...filters, department: values })} /> */}
+          <CheckboxList details={categoryOptions.map((category) => ({ name: category.title}))} title="Category" onChange={(values) => setFilters({ ...filters, category: values })} />
+          {/* <Size onChange={(values) => setFilters({ ...filters, size: values })} /> */}
+          <Color onChange={(values) => setFilters({ ...filters, color: values })} />
+          <RadioList details={brandOptions.map((brand) => ({ name: brand.title}))} title="Brand" onChange={(values) => setFilters({ ...filters, brand: values })} />
+          <Price onChange={(values) => setFilters({ ...filters, price: values })} />
+        </Box>
+
+        <Button
+          variant="outlined"
+          style={{ color: '#7C3FFF', borderColor: '#7C3FFF', width: '100%', padding: '10px' }}
+          onClick={handleSaveFilters}
+        >
+          Save
+        </Button>
+      </Box>
+    </div>
+  );
+};
 
 export default Filters;
