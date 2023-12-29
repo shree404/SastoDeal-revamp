@@ -62,7 +62,7 @@ const Navbar = () => {
                 <AppBar position='' style={{ background: '#613E98' }} className={`${stickyClass}`}>
                     <StyleToolbar>
                         <Link to="/" onClick={() => { window.scrollTo(0, 0); }}>
-                            <Typography variant='h4' style={{ fontWeight: '800' }}>sastodeal.co</Typography>
+                            <Typography variant='h4' style={{ fontWeight: '800' }}>sastodeal.com</Typography>
                         </Link>
                         <Link to="/bazar" onClick={() => { window.scrollTo(0, 0); }}>
                             <Typography variant='body'>Bazar<KeyboardArrowDownIcon /></Typography>
@@ -82,9 +82,9 @@ const Navbar = () => {
                         </Link>
 
 
-                        <Search className='max-md:hidden'><SearchSharpIcon color='action' />
+                        <Search className='max-md:hidden'><SearchSharpIcon color='action' sx ={{mr:2}} />
 
-                            <InputBase placeholder='Search for products...' sx={{ width: "90%" }} />
+                            <InputBase placeholder='Search for products...' sx={{ width: "70%" }} />
                         </Search>
 
                         <Link to = {"/cart"}onClick={() => { window.scrollTo(0, 0); }}><ShoppingCartOutlined /></Link>

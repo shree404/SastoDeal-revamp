@@ -73,7 +73,6 @@ const Footer = () => {
                         <Typography variant='h6' sx={{letterSpacing:"2px"}}>For better Shopping <br/>experience Download <br/>Sastodeal app</Typography>
                         <Box>
                             <img src={qr}/>
-                            <FavoriteBorderIcon sx={{marginLeft:7,marginTop:-40, backgroundColor:"white",height:30,width:30,p:.5}}/>
                         </Box>
                     </Grid>
 
