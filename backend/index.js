@@ -14,11 +14,12 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 
-// Enable CORS for specified origins and allow credentials
+// Update CORS options in your backend
 const corsOptions = {
-  origin: REACT_URI,
+  origin: "http://localhost:3000",
   credentials: true,
 };
+
 
 if (dotenv.error) {
   console.log("Error loading .env file:", dotenv.error);

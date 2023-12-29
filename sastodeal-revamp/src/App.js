@@ -26,8 +26,6 @@ function App() {
   return (
     <div>
 
-      <PersonalInfo/> 
-
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -43,7 +41,8 @@ function App() {
         </Routes>
         <Footer />
       </BrowserRouter>
-
+      <BrowserRouter>
+      <Routes>
           <Route path="/signup" element={ <Signup />} />
           <Route path="/product" element={ <ProductDescription />} />
           <Route path = "/cart" element = {<AddToCart/>}/>
@@ -57,11 +56,6 @@ function App() {
 
     </div>
 
-      {/* <Navbar/>
-      <Home/>
-      <NewArrivals/>
-      <Footer/>
-      <Login/> */}
  
   );
 }
