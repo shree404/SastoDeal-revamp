@@ -9,7 +9,9 @@ import Home from "./Pages/Home";
 import Login from "./Pages/Login"
 import Signup from "./Pages/signup"
 import PageNotFound from "./Pages/PageNotFound"
+import PersonalInfo from "./Pages/PersonalInfo";
 import ProductDescription from "./Pages/ProductDescription"
+
 
 
 function App() {
@@ -17,6 +19,16 @@ function App() {
     <div>
       
 
+
+      <PersonalInfo/>
+    </div>
+
+      {/* <Navbar/>
+      <Home/>
+      <NewArrivals/>
+      <Footer/>
+      <Login/> */}
+      {/* <BrowserRouter>
       <BrowserRouter>
         <Navbar />
         <Routes>
