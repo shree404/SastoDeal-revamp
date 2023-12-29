@@ -1,26 +1,18 @@
 import "./App.css";
- import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Account from "./Pages/Account";
 
-
-
-import Footer from './Components/Footer';
+import Footer from "./Components/Footer";
 import Navbar from "./Components/Navbar";
-import NewArrivals from './Pages/NewArrivals';
+import NewArrivals from "./Pages/NewArrivals";
 import Home from "./Pages/Home";
-import Login from "./Pages/Login"
-import Signup from "./Pages/signup"
-import PageNotFound from "./Pages/PageNotFound"
+import Login from "./Pages/Login";
+import Signup from "./Pages/signup";
+import PageNotFound from "./Pages/PageNotFound";
 import PersonalInfo from "./Pages/PersonalInfo";
-import ProductDescription from "./Pages/ProductDescription"
-import AddToCart from "./Pages/AddToCart"
-
-
-
-
+import ProductDescription from "./Pages/ProductDescription";
+import AddToCart from "./Pages/AddToCart";
 
 function App() {
   return (
@@ -42,21 +34,13 @@ function App() {
         <Footer />
       </BrowserRouter>
       <BrowserRouter>
-      <Routes>
-          <Route path="/signup" element={ <Signup />} />
-          <Route path="/product" element={ <ProductDescription />} />
-          <Route path = "/cart" element = {<AddToCart/>}/>
-          <Route path = "/account" element = {<PersonalInfo/>}/>
-          
-          
-          <Route path = "*" element = {<PageNotFound/>}/>
+
+        <Routes>
+          <Route path="/signup" element={<Signup />} />
         </Routes>
         <Footer />
-      </BrowserRouter>   
-
+      </BrowserRouter>
     </div>
-
- 
   );
 }
 
