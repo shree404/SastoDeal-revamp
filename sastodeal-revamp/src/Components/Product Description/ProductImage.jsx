@@ -11,7 +11,7 @@ import image7 from "../image/image7.png";
 function ProductDetailedImage() {
   return (
     <div>
-      <div className="flex gap-4">
+      <div className="flex gap-4 ">
         <div>
         <img
           src={image2}

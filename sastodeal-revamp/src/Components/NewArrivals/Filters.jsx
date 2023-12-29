@@ -66,9 +66,11 @@ const Filters = () => {
         <div>
             <Box>
                 <div className='flex justify-between w-[100%]'>
-                    <Typography variant='h6' sx={{ fontWeight: "700" }}>Filter</Typography>
+                    <Typography variant='h6' sx={{ fontWeight: "500",ml:1.5 }}>Filter</Typography>
                     <Typography sx={{ textDecoration: "underline", color: "#7C3FFF", textDecorationColor: "#7C3FFF", cursor: "pointer" }}>Reset All</Typography>
+
                 </div>
+                    <hr className='h-2 w-80% text-[#E4E4E4] mt-10 mb-2' />
 
                 <Box>
                     <CheckboxList details={details_department} title="Department" />

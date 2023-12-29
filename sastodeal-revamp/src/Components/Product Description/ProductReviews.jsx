@@ -77,9 +77,9 @@ function ProductReviews() {
       </div>
       
       </div>
-        <div className="flex justify-center">
-          <button className="bg-white border-black text-black font-bold  py-2 px-6 flex justify-center rounded-lg mt-7 mb-7">
-            {" "}
+        <div className="flex justify-center border-[#0000001A]">
+          <button className="bg-white  text-black font-bold  py-2 px-6 flex justify-center rounded-lg mt-7 mb-7">
+            
             Load More Reviews
           </button>
         </div>
