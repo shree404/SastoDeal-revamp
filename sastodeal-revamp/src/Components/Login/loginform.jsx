@@ -47,7 +47,7 @@ function LoginForm() {
       }
 
       const userData = await response.json();
-      console.log(userData);
+     // console.log(userData);
 
       localStorage.setItem("token", userData.token);
       localStorage.setItem("userId", userData._id);
