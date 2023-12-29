@@ -9,18 +9,16 @@ import Home from "./Pages/Home";
 import Login from "./Pages/Login"
 import Signup from "./Pages/signup"
 import PageNotFound from "./Pages/PageNotFound"
+import PersonalInfo from "./Pages/PersonalInfo";
 import ProductDescription from "./Pages/ProductDescription"
 import AddToCart from "./Pages/AddToCart"
+
 
 
 function App() {
   return (
     <div>
-      {/* <Navbar/>
-      <AddToCart/>
-      <Footer/> */}
-      
- 
+    
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -30,12 +28,21 @@ function App() {
           <Route path="/signup" element={ <Signup />} />
           <Route path="/product" element={ <ProductDescription />} />
           <Route path = "/cart" element = {<AddToCart/>}/>
+          <Route path = "/account" element = {<PersonalInfo/>}/>
+          
           
           <Route path = "*" element = {<PageNotFound/>}/>
         </Routes>
         <Footer />
       </BrowserRouter>   
     </div>
+
+      {/* <Navbar/>
+      <Home/>
+      <NewArrivals/>
+      <Footer/>
+      <Login/> */}
+ 
   );
 }
 
