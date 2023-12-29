@@ -1,34 +1,73 @@
-import React , {useState} from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Login successful!');
-    console.log(formData);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [isMounted, setIsMounted] = useState(true);
+  const navigate = useNavigate();
 
-    setFormData({
-      email: '',
-      password: '',
-    });
+  const isTokenValid = () => {
+    const token = localStorage.getItem("token");
+    return token !== null;
   };
+
+  useEffect(() => {
+    return () => {
+      setIsMounted(false); // Update the isMounted state when the component unmounts
+    };
+  }, []);
+
+  const navigateToDashboard = () => {
+    if (isTokenValid()) {
+      navigate("/"); // Redirect to home if the token is valid
+    } else {
+      navigate("/login"); // Redirect to login if the token is not valid
+    }
+  };
+
+  const loginUser = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_API_BASE_URL}/user/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Login failed");
+      }
+
+      const userData = await response.json();
+      console.log(userData);
+
+      localStorage.setItem("token", userData.token);
+      localStorage.setItem("userId", userData._id);
+
+      // Check if the component is still mounted before navigating
+      if (isMounted) {
+        navigateToDashboard(); // Redirect after successful login
+      }
+    } catch (error) {
+      console.error("Login failed", error);
+      setError("Invalid credentials. Please try again.");
+    }
+  };
+
   return (
     <div className="ml-40">
       <div>
         <h2 className="text-[#45A69B] text-3xl mb-8">Login your Account</h2>
       </div>
-      <form action="submit" method="post" onSubmit={handleSubmit} className="mb-2 gap-20">
+      <form className="mb-2 gap-20">
         <span className="mb-5">
           <Box
             component="form"
@@ -38,6 +77,7 @@ function LoginForm() {
             noValidate
             autoComplete="off"
           >
+            {error && <p style={{ color: "red" }}>{error}</p>}
             <div>
               <TextField
                 required
@@ -46,7 +86,9 @@ function LoginForm() {
                 placeholder="Email"
                 name="email"
                 type="email"
-                value={formData.email} onChange={handleChange}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                // value={formData.email} onChange={handleChange}
               />
             </div>
           </Box>
@@ -68,7 +110,9 @@ function LoginForm() {
                 placeholder="Password"
                 name="password"
                 type="password"
-                value={formData.password} onChange={handleChange}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                // value={formData.password} onChange={handleChange}
               />
             </div>
           </Box>
@@ -79,12 +123,15 @@ function LoginForm() {
           <p className="text-[#613E98] ">Forget Password ?</p>
         </div>
         <div className="flex gap-10">
-          <button className="bg-[#613E98] text-white  font-bold py-2 px-8 flex justify-center rounded-lg text-lg mb-4">
+          <button
+            className="bg-[#613E98] text-white  font-bold py-2 px-8 flex justify-center rounded-lg text-lg mb-4"
+            onClick={loginUser}
+          >
             Login
           </button>
           <button className="text-black bg-white border-[#613E98] font-bold py-2 px-6 flex justify-center rounded-lg ">
-          Back
-        </button>
+            Back
+          </button>
         </div>
       </form>
     </div>
