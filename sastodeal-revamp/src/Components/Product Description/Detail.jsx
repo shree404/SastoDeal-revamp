@@ -1,8 +1,12 @@
-import React, { useState } from "react";
-import Rating from "@mui/material/Rating";
+import React, { useState, useEffect } from "react";
+import Ratings from "../NewArrivals/Ratings";
+//import Rating from "@mui/material/Rating";
 import Stack from "@mui/material/Stack";
+import axios from "axios";
 
-function ProductDetail() {
+function ProductDetail(props) {
+  const fetchedProducts = props.data;
+  console.log("fetched image", fetchedProducts);
   const [quantity, setQuantity] = useState(1);
 
   const decreaseValue = () => {
@@ -18,36 +22,30 @@ function ProductDetail() {
     <div>
       <div>
         <h2 className="text-black font-bold text-2xl mb-5">
-          One Life Graphics T-shirt
+          {fetchedProducts.title}
         </h2>
       </div>
       <div className="flex gap-2">
         <Stack spacing={1}>
-          <Rating name="half-rating" defaultValue={4.5} precision={0.5} />
+          <Ratings name="half-rating" rating={fetchedProducts.totalrating} />
         </Stack>
-        <div className="flex">
-          <p className="text-black">4.5/</p>
-          <p className="text-[#ABAFB2]">5</p>
-        </div>
       </div>
       <div className="flex mt-5">
-        <p className="text-black font-bold text-2xl mr-2">Rs.260</p>
+        <p className="text-black font-bold text-2xl mr-2">
+          {fetchedProducts.price - fetchedProducts.price * 0.2}
+        </p>
         <p className="text-[#ABAFB2] line-through text-2xl font-bold mr-4">
-          Rs.300
+          Rs {fetchedProducts.price}
         </p>
         <div>
           <button className="text-[#FF3333] bg-[#FF3333-10%]  flex justify-center rounded-lg ">
             {" "}
-            -40%
+            -20%
           </button>
         </div>
       </div>
       <div className="mt-5 mb-5">
-        <p className="">
-          This graphic t-shirt which is perfect for any occasion . Crafted from
-          a soft and{" "}
-        </p>
-        <p>breathable fabric , it offers superior comfort and style.</p>
+        <p className="">{fetchedProducts.description}</p>
       </div>
       <div>
         <hr className="border-t-30 border-black-500 my-4 w-full  mr-7"></hr>
@@ -85,25 +83,37 @@ function ProductDetail() {
         <hr className="border-t-30 border-black-500 my-4 w-full  mr-7"></hr>
       </div>
 
-
       <div className="flex gap-7 mt-7">
         <div className="bg-[#F0F0F0] rounded-2xl p-2">
-          <button onClick={decreaseValue} className="px-3 py-1 bg-[#F0F0F0]-200 rounded-2xl ">-</button>
+          <button
+            onClick={decreaseValue}
+            className="px-3 py-1 bg-[#F0F0F0]-200 rounded-2xl "
+          >
+            -
+          </button>
           <input
             type="text"
             value={quantity}
             onChange={(e) => setQuantity(parseInt(e.target.value) || 1)}
             className="px-3 py-1 border border-[#F0F0F0]-300 bg-[#F0F0F0] text-black text-center w-16"
           />
-          <button onClick={increaseValue} className="px-3 py-1 bg-[#F0F0F0] rounded-r ">+</button>
+          <button
+            onClick={increaseValue}
+            className="px-3 py-1 bg-[#F0F0F0] rounded-r "
+          >
+            +
+          </button>
         </div>
 
-
         <div>
-          <button className="bg-[#613E98] text-white  font-bold py-2 px-10 flex justify-center rounded-lg text-lg">Buy Now</button>
+          <button className="bg-[#613E98] text-white  font-bold py-2 px-10 flex justify-center rounded-lg text-lg">
+            Buy Now
+          </button>
         </div>
         <div>
-          <button className="bg-[#613E98] text-white  font-bold py-2 px-10 flex justify-center rounded-lg text-lg">Add to Cart</button>
+          <button className="bg-[#613E98] text-white  font-bold py-2 px-10 flex justify-center rounded-lg text-lg">
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>

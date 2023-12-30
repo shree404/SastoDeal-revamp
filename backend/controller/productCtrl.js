@@ -62,16 +62,27 @@ const getaProduct = asyncHandler(async (req, res) => {
 //get all product
 const getallProduct = asyncHandler(async (req, res) => {
   try {
-    //filtering
+    // Filtering
     const queryObj = { ...req.query };
     const excludeFields = ["page", "sort", "limit", "fields"];
     excludeFields.forEach((el) => delete queryObj[el]);
+
+    // Convert the price range to an array if it exists
+    if (queryObj.price) {
+      const [minPrice, maxPrice] = queryObj.price.split(",");
+      queryObj.price = { $gte: +minPrice, $lte: +maxPrice };
+    } else {
+      // If price is null or undefined, remove it from the query object
+      delete queryObj.price;
+    }
+
+    // Convert the remaining query parameters
     let queryStr = JSON.stringify(queryObj);
     queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
 
     let query = Product.find(JSON.parse(queryStr));
 
-    //Sorting
+    // Sorting
     if (req.query.sort) {
       const sortBy = req.query.sort.split(",").join(" ");
       query = query.sort(sortBy);
@@ -79,7 +90,7 @@ const getallProduct = asyncHandler(async (req, res) => {
       query = query.sort("-createdAt");
     }
 
-    //limiting the fields
+    // Limiting the fields
     if (req.query.fields) {
       const fields = req.query.fields.split(",").join(" ");
       query = query.select(fields);
@@ -87,20 +98,22 @@ const getallProduct = asyncHandler(async (req, res) => {
       query = query.select("-__v");
     }
 
-    //pagination
+    // Pagination
     const page = req.query.page;
     const limit = req.query.limit;
     const skip = (page - 1) * limit;
     query = query.skip(skip).limit(limit);
+
     if (req.query.page) {
       const productCount = await Product.countDocuments();
-      if (skip >= productCount) throw new Error("This page does not exists");
+      if (skip >= productCount) throw new Error("This page does not exist");
     }
 
-    const product = await query;
-    res.json(product);
+    const products = await query;
+    res.json(products);
   } catch (error) {
-    throw new Error(error);
+    console.error("Error fetching products:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 

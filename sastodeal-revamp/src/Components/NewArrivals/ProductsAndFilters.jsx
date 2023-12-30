@@ -1,8 +1,6 @@
-// Products.jsx
-
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Box, Typography, Pagination } from "@mui/material";
+import { Box, Typography, Pagination, Button } from "@mui/material";
 import AppsIcon from "@mui/icons-material/Apps";
 import GridViewIcon from "@mui/icons-material/GridView";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -10,10 +8,15 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Skeleton from "@mui/material/Skeleton";
 import Ratings from "./Ratings";
 import Breadcrumb from "./Breadcrumb";
-import Filters from "./Filters";
+
+import CheckboxList from "./CheckboxList";
+
+import RadioList from "./RadioList";
+import Color from "./Color";
+import Price from "./Price";
 import axios from "axios";
 
-const Products = () => {
+const ProductsAndFilters = () => {
   const [grid, setGrid] = useState("grid-cols-3");
   const [grid3open, setGrid3open] = useState(true);
   const [loading, setLoading] = useState(true);
@@ -31,6 +34,27 @@ const Products = () => {
       try {
         let apiUrl = `${process.env.REACT_APP_API_BASE_URL}/product?page=${currentPage}&limit=12`;
 
+        // Build dynamic query parameters based on filters with values
+        const queryParams = {};
+
+        if (filters.category.length > 0) {
+          queryParams.category = filters.category.join(",");
+        }
+        if (filters.color.length > 0) {
+          queryParams.color = filters.color.join(",");
+        }
+        if (filters.brand.length > 0) {
+          queryParams.brand = filters.brand.join(",");
+        }
+        // Handle price range logic
+        if (filters.price.length > 0) {
+          // Extract the price range values from the selected option
+          const [minPrice, maxPrice] = filters.price.split("-");
+          queryParams.price = `price[gte]=${minPrice}&price[lte]=${maxPrice}`;
+        }
+        // Append dynamic query parameters to the URL
+        apiUrl += `&${new URLSearchParams(queryParams)}`;
+
         const response = await axios.get(apiUrl);
         setFetchedProducts(response.data);
         console.log("Products:", response.data);
@@ -41,7 +65,7 @@ const Products = () => {
     };
 
     fetchData();
-  }, [filters]);
+  }, [filters, currentPage]);
 
   const handle_grid3 = () => {
     setGrid("grid-cols-3");
@@ -55,13 +79,139 @@ const Products = () => {
 
   const handleFiltersUpdate = (newFilters) => {
     setFilters(newFilters);
+    // Reset the current page to 1 when filters change
+    setCurrentPage(1);
+  };
+
+  const handleResetFilters = () => {
+    // Reset all filters to their initial state
+    setFilters({
+      category: [],
+      color: [],
+      brand: [],
+      price: [],
+    });
+    // Reset the current page to 1
+    setCurrentPage(1);
+  };
+
+  const [categoryOptions, setCategoryOptions] = useState([]);
+  const [brandOptions, setBrandOptions] = useState([]);
+
+  useEffect(() => {
+    // Fetch category options from the API
+    const fetchCategoryOptions = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_BASE_URL}/category`
+        );
+        setCategoryOptions(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching category options:", error);
+      }
+    };
+
+    // Fetch category options from the API
+    const fetchBrandOptions = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_BASE_URL}/brand`
+        );
+        setBrandOptions(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching brand options:", error);
+      }
+    };
+
+    fetchCategoryOptions();
+    fetchBrandOptions();
+  }, []);
+
+  const handleSaveFilters = async () => {
+    try {
+      // Convert the filters object into query parameters
+      const queryParams = new URLSearchParams({
+        ...filters,
+        page: currentPage,
+      });
+
+      // Make a request to fetch filtered products from the backend
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_BASE_URL}/product?${queryParams}`
+      );
+
+      // Process the response (set products state, etc.)
+      console.log("Filtered Products:", response.data);
+      // Update the filters in the parent component
+      handleFiltersUpdate(filters);
+    } catch (error) {
+      console.error("Error fetching filtered products:", error);
+    }
   };
 
   return (
     <Box className="flex justify-around m-10">
       {/* FOR FILTER VIEW IN LEFT SIDE */}
       <Box>
-        <Filters updateFilters={handleFiltersUpdate} />
+        <div>
+          <Box>
+            <div className="flex justify-between w-[100%]">
+              <Typography variant="h6" sx={{ fontWeight: "500", ml: 1.5 }}>
+                Filter
+              </Typography>
+              <Typography
+                sx={{
+                  textDecoration: "underline",
+                  color: "#7C3FFF",
+                  textDecorationColor: "#7C3FFF",
+                  cursor: "pointer",
+                }}
+                onClick={handleResetFilters}
+              >
+                Reset All
+              </Typography>
+            </div>
+            <hr className="h-2 w-80% text-[#E4E4E4] mt-10 mb-2" />
+
+            <Box>
+              <CheckboxList
+                details={categoryOptions.map((category) => ({
+                  name: category.title,
+                }))}
+                title="Category"
+                onChange={(values) =>
+                  setFilters({ ...filters, category: values })
+                }
+              />
+              <Color
+                onChange={(values) => setFilters({ ...filters, color: values })}
+              />
+              <RadioList
+                details={brandOptions.map((brand) => ({ name: brand.title }))}
+                title="Brand"
+                onChange={(values) => setFilters({ ...filters, brand: values })}
+              />
+              <Price
+                onChange={(values) => setFilters({ ...filters, price: values })}
+              />
+            </Box>
+
+            <Button
+              variant="outlined"
+              style={{
+                color: "#7C3FFF",
+                borderColor: "#7C3FFF",
+                width: "100%",
+                padding: "10px",
+              }}
+              onClick={handleSaveFilters}
+            >
+              Save
+            </Button>
+          </Box>
+        </div>
       </Box>
 
       {/* FOR PRODUCT VIEW ON THE RIGHT SIDE */}
@@ -220,4 +370,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default ProductsAndFilters;

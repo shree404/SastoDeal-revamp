@@ -13,6 +13,7 @@ import PageNotFound from "./Pages/PageNotFound";
 import PersonalInfo from "./Pages/PersonalInfo";
 import ProductDescription from "./Pages/ProductDescription";
 import AddToCart from "./Pages/AddToCart";
+import PersonalInfoSection from "./Components/Personal Info/section"
 
 function App() {
   return (
@@ -26,20 +27,14 @@ function App() {
           <Route path="/login" element={<Login />} />
 
           <Route path="/signup" element={<Signup />} />
-          <Route path="/account" element={<Account />} />
+          <Route path="/account" element={<PersonalInfoSection />} />
           <Route path="/product" element={<ProductDescription />} />
 
           <Route path="*" element={<PageNotFound />} />
         </Routes>
         <Footer />
       </BrowserRouter>
-      <BrowserRouter>
 
-        <Routes>
-          <Route path="/signup" element={<Signup />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
     </div>
   );
 }

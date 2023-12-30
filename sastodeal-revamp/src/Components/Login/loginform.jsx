@@ -7,27 +7,23 @@ function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [isMounted, setIsMounted] = useState(true);
   const navigate = useNavigate();
 
   const isTokenValid = () => {
     const token = localStorage.getItem("token");
     return token !== null;
   };
-
-  useEffect(() => {
-    return () => {
-      setIsMounted(false); // Update the isMounted state when the component unmounts
-    };
-  }, []);
-
+  
   const navigateToDashboard = () => {
-    if (isTokenValid()) {
-      navigate("/"); // Redirect to home if the token is valid
-    } else {
-      navigate("/login"); // Redirect to login if the token is not valid
-    }
+    navigate("/"); // Redirect to home
   };
+  
+  useEffect(() => {
+    if (isTokenValid()) {
+      navigateToDashboard();
+    }
+  }, [isTokenValid]);
+
 
   const loginUser = async () => {
     try {
@@ -41,27 +37,25 @@ function LoginForm() {
           body: JSON.stringify({ email, password }),
         }
       );
-
+  
       if (!response.ok) {
         throw new Error("Login failed");
       }
-
+  
       const userData = await response.json();
-     // console.log(userData);
-
+  
       localStorage.setItem("token", userData.token);
       localStorage.setItem("userId", userData._id);
-
-      // Check if the component is still mounted before navigating
-      if (isMounted) {
-        navigateToDashboard(); // Redirect after successful login
-      }
+  
+      // Redirect to the home page or the previous page
+      navigateToDashboard();
     } catch (error) {
       console.error("Login failed", error);
       setError("Invalid credentials. Please try again.");
     }
   };
-
+  
+  
   return (
     <div className="ml-40">
       <div>
