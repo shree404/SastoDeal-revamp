@@ -29,6 +29,9 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/account" element={<PersonalInfoSection />} />
           <Route path="/product" element={<ProductDescription />} />
+          <Route path="/cart" element={<AddToCart />} />
+          <Route path="/account" element={<PersonalInfo />} />
+           
 
           <Route path="*" element={<PageNotFound />} />
         </Routes>
